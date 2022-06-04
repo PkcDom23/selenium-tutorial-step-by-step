@@ -10,28 +10,24 @@ namespace selenium_tutorial_step_by_step.Steps
     {
         private IWebDriver _driver = new ChromeDriver();
 
-        [Given(@"I go to the page 'http://the-internet.herokuapp.com/login'")]
-        public void GoToTheLoginPage()
+        [Given(@"I go to the page '(.*)'")]
+        public void GoToTheLoginPage(string url)
         {
-            _driver.Url = "http://the-internet.herokuapp.com/login";
+            _driver.Url = url;
         }
 
-        [When(@"I enter username 'tomsmith'")]
-        public void EnterUsername()
+        [When(@"I enter username '(.*)'")]
+        public void EnterUsername(string username)
         {
             var usernameField = _driver.FindElement(By.XPath("/html/body/div[2]/div/div/form/div[1]/div/input"));
-
-            var username = "tomsmith";
 
             usernameField.SendKeys(username);
         }
 
-        [When(@"I enter password 'SuperSecretPassword!'")]
-        public void EnterPassword()
+        [When(@"I enter password '(.*)'")]
+        public void EnterPassword(string password)
         {
             var passwordField = _driver.FindElement(By.XPath("/html/body/div[2]/div/div/form/div[2]/div/input"));
-
-            var password = "SuperSecretPassword!";
 
             passwordField.SendKeys(password);
         }
