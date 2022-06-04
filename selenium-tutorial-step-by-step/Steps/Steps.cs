@@ -38,5 +38,15 @@ namespace selenium_tutorial_step_by_step.Steps
 
             Thread.Sleep(2000);
         }
+
+        [When(@"I press the Login button")]
+        public void PressLoginButton()
+        {
+            var loginButton = _driver.FindElement(By.XPath("/html/body/div[2]/div/div/form/button/i"));
+
+            loginButton.Click();
+
+            Thread.Sleep(2000);
+        }
     }
 }

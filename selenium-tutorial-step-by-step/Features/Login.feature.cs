@@ -99,6 +99,9 @@ testRunner.When("I enter username \'tomsmith\'", ((string)(null)), ((TechTalk.Sp
 #line 8
 testRunner.And("I enter password \'SuperSecretPassword!\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
+#line 9
+testRunner.And("I press the Login button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
             }
             this.ScenarioCleanup();
         }
