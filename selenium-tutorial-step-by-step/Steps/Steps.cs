@@ -50,11 +50,25 @@ namespace selenium_tutorial_step_by_step.Steps
         {
             var loginPage = new PageObjects.LoginSuccessPage(_driver);
 
-            Assert.AreEqual("You logged into a secure area!\r\n×", loginPage.successMessage.Text);
+            var expectedMessage = "You logged into a secure area!\r\n×";
+            var actualMessage = loginPage.successMessage.Text;
+
+            Assert.AreEqual(expectedMessage, actualMessage);
 
             Thread.Sleep(2000);
+        }
 
-            _driver.Quit();
+        [Then(@"I see that I am NOT logged in")]
+        public void VerifyWrongCredentialsProvided()
+        {
+            var loginPage = new PageObjects.LoginPage(_driver);
+
+            var expectedMessage = "Your username is invalid!\r\n×";
+            var actualMessage = loginPage.loginFailedMessage.Text;
+
+            Assert.AreEqual(expectedMessage, actualMessage);
+
+            Thread.Sleep(2000);
         }
     }
 }
