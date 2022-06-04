@@ -1,9 +1,6 @@
 ﻿Feature: Login
 
-A short summary of the feature
+Very first test with Selenium
 
-@tag1
-Scenario: [scenario name]
-	Given [context]
-	When [action]
-	Then [outcome]
+Scenario: OK login
+Given I go to the page 'http://the-internet.herokuapp.com/login'
