@@ -1,34 +1,33 @@
 ﻿using TechTalk.SpecFlow;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium;
 
 namespace selenium_tutorial_step_by_step
 {
     [Binding]
     public sealed class Hooks
     {
-        // For additional details on SpecFlow hooks see http://go.specflow.org/doc-hooks
-
-        [BeforeScenario("@tag1")]
-        public void BeforeScenarioWithTag()
+        [BeforeScenario]
+        public void StartUp(ScenarioContext scenarioContext)
         {
-            // Example of filtering hooks using tags. (in this case, this 'before scenario' hook will execute if the feature/scenario contains the tag '@tag1')
-            // See https://docs.specflow.org/projects/specflow/en/latest/Bindings/Hooks.html?highlight=hooks#tag-scoping
+            ChromeOptions options = new ChromeOptions();
 
-            //TODO: implement logic that has to run before executing each scenario
-        }
+            options.AddExcludedArgument("enable-automation");
+            options.AddUserProfilePreference("credentials_enable_service", false);
 
-        [BeforeScenario(Order = 1)]
-        public void FirstBeforeScenario()
-        {
-            // Example of ordering the execution of hooks
-            // See https://docs.specflow.org/projects/specflow/en/latest/Bindings/Hooks.html?highlight=order#hook-execution-order
+            ChromeDriver _driver = new ChromeDriver(options);
 
-            //TODO: implement logic that has to run before executing each scenario
+            _driver.Manage().Window.Maximize();
+
+            scenarioContext["driver"] = _driver;
         }
 
         [AfterScenario]
-        public void AfterScenario()
+        public void AfterScenario(ScenarioContext scenarioContext)
         {
-            //TODO: implement logic that has to run after executing each scenario
+            var driver = scenarioContext["driver"] as IWebDriver;
+
+            driver.Quit();
         }
     }
 }
