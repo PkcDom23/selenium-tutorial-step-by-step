@@ -96,6 +96,9 @@ testRunner.Given("I go to the page \'http://the-internet.herokuapp.com/login\'",
 #line 7
 testRunner.When("I enter username \'tomsmith\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
+#line 8
+testRunner.And("I enter password \'SuperSecretPassword!\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
             }
             this.ScenarioCleanup();
         }
