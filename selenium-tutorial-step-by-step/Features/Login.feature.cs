@@ -93,6 +93,9 @@ this.ScenarioInitialize(scenarioInfo);
 #line 6
 testRunner.Given("I go to the page \'http://the-internet.herokuapp.com/login\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
+#line 7
+testRunner.When("I enter username \'tomsmith\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
             }
             this.ScenarioCleanup();
         }
