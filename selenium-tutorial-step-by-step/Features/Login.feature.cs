@@ -102,6 +102,9 @@ testRunner.And("I enter password \'SuperSecretPassword!\'", ((string)(null)), ((
 #line 9
 testRunner.And("I press the Login button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
+#line 10
+testRunner.Then("I see that I am logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
             }
             this.ScenarioCleanup();
         }

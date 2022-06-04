@@ -1,6 +1,7 @@
 ﻿using TechTalk.SpecFlow;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using NUnit.Framework;
 
 namespace selenium_tutorial_step_by_step.Steps
 {
@@ -23,8 +24,6 @@ namespace selenium_tutorial_step_by_step.Steps
             var username = "tomsmith";
 
             usernameField.SendKeys(username);
-
-            Thread.Sleep(2000);
         }
 
         [When(@"I enter password 'SuperSecretPassword!'")]
@@ -35,8 +34,6 @@ namespace selenium_tutorial_step_by_step.Steps
             var password = "SuperSecretPassword!";
 
             passwordField.SendKeys(password);
-
-            Thread.Sleep(2000);
         }
 
         [When(@"I press the Login button")]
@@ -45,8 +42,16 @@ namespace selenium_tutorial_step_by_step.Steps
             var loginButton = _driver.FindElement(By.XPath("/html/body/div[2]/div/div/form/button/i"));
 
             loginButton.Click();
+        }
 
-            Thread.Sleep(2000);
+        [Then(@"I see that I am logged in")]
+        public void VerifyThatImLoggedIn()
+        {
+            var successMessage = _driver.FindElement(By.XPath("/html/body/div[1]/div/div"));
+
+            Assert.AreEqual("You logged into a secure area!\r\n×", successMessage.Text);
+
+            _driver.Quit();
         }
     }
 }
