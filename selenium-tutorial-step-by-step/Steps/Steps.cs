@@ -19,33 +19,33 @@ namespace selenium_tutorial_step_by_step.Steps
         [When(@"I enter username '(.*)'")]
         public void EnterUsername(string username)
         {
-            var usernameField = _driver.FindElement(By.XPath("/html/body/div[2]/div/div/form/div[1]/div/input"));
+            var loginPage = new PageObjects.LoginPage(_driver);
 
-            usernameField.SendKeys(username);
+            loginPage.userNameInput.SendKeys(username);
         }
 
         [When(@"I enter password '(.*)'")]
         public void EnterPassword(string password)
         {
-            var passwordField = _driver.FindElement(By.XPath("/html/body/div[2]/div/div/form/div[2]/div/input"));
+            var loginPage = new PageObjects.LoginPage(_driver);
 
-            passwordField.SendKeys(password);
+            loginPage.passwordInput.SendKeys(password);
         }
 
         [When(@"I press the Login button")]
         public void PressLoginButton()
         {
-            var loginButton = _driver.FindElement(By.XPath("/html/body/div[2]/div/div/form/button/i"));
+            var loginPage = new PageObjects.LoginPage(_driver);
 
-            loginButton.Click();
+            loginPage.loginButton.Click();
         }
 
         [Then(@"I see that I am logged in")]
         public void VerifyThatImLoggedIn()
         {
-            var successMessage = _driver.FindElement(By.XPath("/html/body/div[1]/div/div"));
+            var loginPage = new PageObjects.LoginPage(_driver);
 
-            Assert.AreEqual("You logged into a secure area!\r\n×", successMessage.Text);
+            Assert.AreEqual("You logged into a secure area!\r\n×", loginPage.successMessage.Text);
 
             _driver.Quit();
         }
