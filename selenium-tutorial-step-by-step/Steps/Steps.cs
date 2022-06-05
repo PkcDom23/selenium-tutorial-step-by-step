@@ -73,7 +73,7 @@ namespace selenium_tutorial_step_by_step.Steps
             var loginPage = new PageObjects.LoginPage(_driver);
 
             var expectedMessage = "Your username is invalid!\r\n×";
-            var expectedMessage2 = "You logged out of the secure area!";
+            var expectedMessage2 = "You logged out of the secure area!\r\n×";
 
             var actualMessage = loginPage.loginPageTopMessage.Text;
             
@@ -87,9 +87,9 @@ namespace selenium_tutorial_step_by_step.Steps
                 Assert.Pass();
                 Thread.Sleep(2000);
             }
-            else 
-            { 
-                Assert.Fail("The actual text in the top element does not match any of the expected messages!"); 
+            else
+            {
+                Assert.Fail("The actual text in the top element does not match any of the expected messages!\n Actual msg: " + actualMessage);                
             }
         }
 
