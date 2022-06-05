@@ -123,8 +123,7 @@ namespace selenium_tutorial_step_by_step.Steps
         {
             var loginSuccessPage = new PageObjects.LoginSuccessPage(_driver);
 
-            // TODO: uncomment following line after you have locator for the Logout Button:
-            // loginSuccessPage.logoutButton.Click();
+            loginSuccessPage.logoutButton.Click();
         }
     }
 }
