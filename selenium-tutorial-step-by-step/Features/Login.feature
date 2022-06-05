@@ -15,3 +15,6 @@ When I enter username 'wrongUsername'
 And I enter password 'wrongPassword'
 And I press the Login button
 Then I see that I am NOT logged in
+
+Scenario: Logout
+Given I am logged in

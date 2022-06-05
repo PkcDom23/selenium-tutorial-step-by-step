@@ -20,6 +20,15 @@ namespace selenium_tutorial_step_by_step.Steps
             NavigateToUrlMethod(url);
         }
 
+        [Given(@"I am logged in")]
+        public void IAmLoggedIn()
+        {
+            NavigateToUrlMethod("http://the-internet.herokuapp.com/login");
+            EnterUsernameMethod("tomsmith");
+            EnterPasswordMethod("SuperSecretPassword!");
+            PressLoginButtonMethod();
+        }
+
         [When(@"I enter username '(.*)'")]
         public void EnterUsername(string username)
         {
