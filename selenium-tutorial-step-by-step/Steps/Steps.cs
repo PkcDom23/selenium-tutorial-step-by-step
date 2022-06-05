@@ -1,6 +1,5 @@
 ﻿using TechTalk.SpecFlow;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 using NUnit.Framework;
 
 namespace selenium_tutorial_step_by_step.Steps
@@ -18,31 +17,25 @@ namespace selenium_tutorial_step_by_step.Steps
         [Given(@"I go to the page '(.*)'")]
         public void GoToTheLoginPage(string url)
         {
-            _driver.Navigate().GoToUrl(url);
+            NavigateToUrlMethod(url);
         }
 
         [When(@"I enter username '(.*)'")]
         public void EnterUsername(string username)
         {
-            var loginPage = new PageObjects.LoginPage(_driver);
-
-            loginPage.userNameInput.SendKeys(username);
+            EnterUsernameMethod(username);
         }
 
         [When(@"I enter password '(.*)'")]
         public void EnterPassword(string password)
         {
-            var loginPage = new PageObjects.LoginPage(_driver);
-
-            loginPage.passwordInput.SendKeys(password);
+            EnterPasswordMethod(password);
         }
 
         [When(@"I press the Login button")]
         public void PressLoginButton()
         {
-            var loginPage = new PageObjects.LoginPage(_driver);
-
-            loginPage.loginButton.Click();
+            PressLoginButtonMethod();
         }
 
         [Then(@"I see that I am logged in")]
@@ -69,6 +62,32 @@ namespace selenium_tutorial_step_by_step.Steps
             Assert.AreEqual(expectedMessage, actualMessage);
 
             Thread.Sleep(2000);
+        }
+
+        private void NavigateToUrlMethod(string url)
+        {
+            _driver.Navigate().GoToUrl(url);
+        }
+
+        private void EnterUsernameMethod(string username)
+        {
+            var loginPage = new PageObjects.LoginPage(_driver);
+
+            loginPage.userNameInput.SendKeys(username);
+        }
+
+        private void EnterPasswordMethod(string password)
+        {
+            var loginPage = new PageObjects.LoginPage(_driver);
+
+            loginPage.passwordInput.SendKeys(password);
+        }
+
+        private void PressLoginButtonMethod()
+        {
+            var loginPage = new PageObjects.LoginPage(_driver);
+
+            loginPage.loginButton.Click();
         }
     }
 }
