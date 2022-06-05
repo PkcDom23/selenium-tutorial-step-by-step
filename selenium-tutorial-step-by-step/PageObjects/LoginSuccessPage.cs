@@ -14,5 +14,7 @@ namespace selenium_tutorial_step_by_step.PageObjects
 
         [FindsBy(How = How.XPath, Using = "/html/body/div[1]/div/div")]
         public IWebElement successMessage;
+
+        // TODO: Find the Logout button
     }
 }

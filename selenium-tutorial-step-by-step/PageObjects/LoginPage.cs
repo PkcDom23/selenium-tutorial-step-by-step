@@ -22,6 +22,6 @@ namespace selenium_tutorial_step_by_step.PageObjects
         public IWebElement loginButton;
 
         [FindsBy(How = How.XPath, Using = "/html/body/div[1]/div/div")]
-        public IWebElement loginFailedMessage;
+        public IWebElement loginPageTopMessage;
     }
 }

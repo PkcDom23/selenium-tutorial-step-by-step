@@ -47,6 +47,13 @@ namespace selenium_tutorial_step_by_step.Steps
             PressLoginButtonMethod();
         }
 
+        [When(@"I press the Logout button")]
+        public void PressLogoutButton()
+        {
+            PressLogoutButtonMethod();
+        }
+
+
         [Then(@"I see that I am logged in")]
         public void VerifyThatImLoggedIn()
         {
@@ -66,11 +73,24 @@ namespace selenium_tutorial_step_by_step.Steps
             var loginPage = new PageObjects.LoginPage(_driver);
 
             var expectedMessage = "Your username is invalid!\r\n×";
-            var actualMessage = loginPage.loginFailedMessage.Text;
+            var expectedMessage2 = "You logged out of the secure area!";
 
-            Assert.AreEqual(expectedMessage, actualMessage);
-
-            Thread.Sleep(2000);
+            var actualMessage = loginPage.loginPageTopMessage.Text;
+            
+            if(expectedMessage == actualMessage)
+            {
+                Assert.Pass();
+                Thread.Sleep(2000);
+            }
+            else if (expectedMessage2 == actualMessage)
+            {
+                Assert.Pass();
+                Thread.Sleep(2000);
+            }
+            else 
+            { 
+                Assert.Fail("The actual text in the top element does not match any of the expected messages!"); 
+            }
         }
 
         private void NavigateToUrlMethod(string url)
@@ -97,6 +117,14 @@ namespace selenium_tutorial_step_by_step.Steps
             var loginPage = new PageObjects.LoginPage(_driver);
 
             loginPage.loginButton.Click();
+        }
+
+        private void PressLogoutButtonMethod()
+        {
+            var loginSuccessPage = new PageObjects.LoginSuccessPage(_driver);
+
+            // TODO: uncomment following line after you have locator for the Logout Button:
+            // loginSuccessPage.logoutButton.Click();
         }
     }
 }

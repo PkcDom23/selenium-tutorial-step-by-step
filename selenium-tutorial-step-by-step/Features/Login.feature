@@ -18,3 +18,5 @@ Then I see that I am NOT logged in
 
 Scenario: Logout
 Given I am logged in
+When I press the Logout button
+Then I see that I am NOT logged in
