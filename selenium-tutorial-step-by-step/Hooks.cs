@@ -14,10 +14,12 @@ namespace selenium_tutorial_step_by_step
 
             options.AddExcludedArgument("enable-automation");
             options.AddUserProfilePreference("credentials_enable_service", false);
+            
 
             ChromeDriver _driver = new ChromeDriver(options);
 
             _driver.Manage().Window.Maximize();
+            _driver.Manage().Cookies.DeleteAllCookies();
 
             scenarioContext["driver"] = _driver;
         }
